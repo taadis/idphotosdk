@@ -14,24 +14,49 @@ import (
 	"time"
 )
 
+type HumanMattingModel string
+
+const (
+	HumanMattingModel_ModnetPhotographicPortraitMatting HumanMattingModel = "modnet_photographic_portrait_matting"
+	HumanMattingModel_HivisionModnet                    HumanMattingModel = "hivision_modnet"
+	HumanMattingModel_Rmbg1_4                           HumanMattingModel = "rmbg-1.4"
+	HumanMattingModel_BirefnetV1Lite                    HumanMattingModel = "birefnet-v1-lite"
+)
+
 type IdphotoRequest struct {
-	InputImage         io.Reader `json:"-"`
-	InputImageBase64   string    `json:"-"`
-	Height             *int      `json:"height"`
-	Width              *int      `json:"width"`
-	HumanMattingModel  *string   `json:"human_matting_model"`
-	FaceDetectModel    *string   `json:"face_detect_model"`
-	Hd                 bool      `json:"hd"`
-	Dpi                *int      `json:"dpi"`
-	FaceAlignment      bool      `json:"face_alignment"`
-	HeadHeightRatio    *float64  `json:"head_height_ratio"`
-	HeadMeasureRatio   *float64  `json:"head_measure_ratio"`
-	TopDistanceMin     *float64  `json:"top_distance_min"`
-	TopDistanceMax     *float64  `json:"top_distance_max"`
-	BrightnessStrength *float64  `json:"brightness_strength"`
-	ContrastStrength   *float64  `json:"contrast_strength"`
-	SharpenStrength    *float64  `json:"sharpen_strength"`
-	SaturationStrength *float64  `json:"saturation_strength"`
+	InputImage io.Reader `json:"-"`
+
+	InputImageBase64 string `json:"-"`
+
+	Height *int `json:"height"`
+
+	Width *int `json:"width"`
+
+	HumanMattingModel HumanMattingModel `json:"human_matting_model"`
+
+	FaceDetectModel string `json:"face_detect_model"`
+
+	Hd bool `json:"hd"`
+
+	Dpi *int `json:"dpi"`
+
+	FaceAlignment bool `json:"face_alignment"`
+
+	HeadHeightRatio *float64 `json:"head_height_ratio"`
+
+	HeadMeasureRatio *float64 `json:"head_measure_ratio"`
+
+	TopDistanceMin *float64 `json:"top_distance_min"`
+
+	TopDistanceMax *float64 `json:"top_distance_max"`
+
+	BrightnessStrength *float64 `json:"brightness_strength"`
+
+	ContrastStrength *float64 `json:"contrast_strength"`
+
+	SharpenStrength *float64 `json:"sharpen_strength"`
+
+	SaturationStrength *float64 `json:"saturation_strength"`
 }
 
 func (r *IdphotoRequest) Request(ctx context.Context) (*http.Request, error) {

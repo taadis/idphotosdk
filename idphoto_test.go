@@ -29,7 +29,10 @@ func TestIdphoto(t *testing.T) {
 	t.Run("with-input-image-standard", func(t *testing.T) {
 		req := NewIdphotoRequest()
 		req.InputImage = file
+		req.Height = 413
+		req.Width = 295
 		req.Hd = false
+		req.HumanMattingModel = HumanMattingModel_ModnetPhotographicPortraitMatting
 		rsp, err := client.Idphoto(ctx, req)
 		if err != nil {
 			t.Fatalf("request failed, error:%v", err)
