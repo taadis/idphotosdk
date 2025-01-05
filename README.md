@@ -1,23 +1,25 @@
-# hivision-id-photos-sdk-go
+# idphotossdk
+
+hivision id photo sdk.
 
 ## Usage
 
 get package
 
 ```
-go get github.com/taadis/hivision-id-photos-sdk-go
+go get github.com/taadis/idphotosdk
 ```
 
 code example
 
 ```
-package idphotosdk
+package main
 
 import (
 	"context"
 	"fmt"
 
-    idphotosdk "github.com/taadis/hivision-id-photos-sdk-go"
+	"github.com/taadis/idphotosdk"
 )
 
 func main(){
@@ -27,6 +29,7 @@ func main(){
 		idphotosdk.WithLogEnabled(true),
 	)
 	req := idphotosdk.NewIdphotoRequest()
+	req.InputImageBase64 = "your_image_base64"
 	rsp, err := client.Idphoto(ctx, req)
 	if err != nil {
 		panic(err)
