@@ -23,18 +23,28 @@ const (
 	HumanMattingModel_BirefnetV1Lite                    HumanMattingModel = "birefnet-v1-lite"
 )
 
+type FaceDetectModel string
+
+const (
+	FaceDetectModel_Mtcnn FaceDetectModel = "mtcnn"
+
+	FaceDetectModel_FacePlusPlus FaceDetectModel = "face_plusplus"
+
+	FaceDetectModel_RetinafaceResnet50 FaceDetectModel = "retinaface-resnet50"
+)
+
 type IdphotoRequest struct {
 	InputImage io.Reader `json:"-"`
 
 	InputImageBase64 string `json:"-"`
 
-	Height *int `json:"height"`
+	Height int `json:"height"`
 
-	Width *int `json:"width"`
+	Width int `json:"width"`
 
 	HumanMattingModel HumanMattingModel `json:"human_matting_model"`
 
-	FaceDetectModel string `json:"face_detect_model"`
+	FaceDetectModel FaceDetectModel `json:"face_detect_model"`
 
 	Hd bool `json:"hd"`
 

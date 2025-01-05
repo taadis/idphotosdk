@@ -33,6 +33,7 @@ func TestIdphoto(t *testing.T) {
 		req.Width = 295
 		req.Hd = false
 		req.HumanMattingModel = HumanMattingModel_ModnetPhotographicPortraitMatting
+		req.FaceDetectModel = FaceDetectModel_Mtcnn
 		rsp, err := client.Idphoto(ctx, req)
 		if err != nil {
 			t.Fatalf("request failed, error:%v", err)
