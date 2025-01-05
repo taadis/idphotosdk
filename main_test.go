@@ -1,6 +1,7 @@
 package idphotosdk
 
 import (
+	"context"
 	"os"
 	"testing"
 )
@@ -23,15 +24,22 @@ func getHivisionIdphotoInputImageBase64() string {
 
 var inputImagePath string
 var file *os.File
+var client *Client
+var ctx context.Context
 
 func TestMain(m *testing.M) {
 	var err error
+	ctx = context.Background()
 	inputImagePath = getHivisionIdphotoInputImage()
 	file, err = os.Open(inputImagePath)
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
+	client = NewClient(
+		WithBaseUrl(getHivisionIdphotoBaseUrl()),
+		WithLogEnabled(false),
+	)
 	os.Exit(m.Run())
 }
 
