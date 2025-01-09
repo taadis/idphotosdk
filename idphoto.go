@@ -48,7 +48,7 @@ type IdphotoRequest struct {
 
 	Hd bool `json:"hd"`
 
-	Dpi *int `json:"dpi"`
+	Dpi int `json:"dpi"`
 
 	FaceAlignment bool `json:"face_alignment"`
 

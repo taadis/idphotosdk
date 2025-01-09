@@ -58,6 +58,12 @@ func TestIdphoto(t *testing.T) {
 		base64Str = fmt.Sprintf("data:image/jpeg;base64,%s", base64Str)
 		req := NewIdphotoRequest()
 		req.InputImageBase64 = base64Str
+		req.Height = 413
+		req.Width = 295
+		req.Hd = false
+		req.Dpi = 300
+		req.HumanMattingModel = HumanMattingModel_ModnetPhotographicPortraitMatting
+		req.FaceDetectModel = FaceDetectModel_Mtcnn
 		rsp, err := client.Idphoto(ctx, req)
 		if err != nil {
 			t.Fatalf("request failed, error:%v", err)
