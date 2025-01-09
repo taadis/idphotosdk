@@ -16,8 +16,8 @@ func TestAddBackground(t *testing.T) {
 	)
 
 	t.Run("invalid_source", func(t *testing.T) {
-		req := NewAddBackgroudRequest()
-		_, err := client.AddBackgroud(ctx, req)
+		req := NewAddBackgroundRequest()
+		_, err := client.AddBackground(ctx, req)
 		if err == nil {
 			t.Fatalf("want non-nil but got %v", err)
 		}
@@ -27,9 +27,9 @@ func TestAddBackground(t *testing.T) {
 	})
 
 	t.Run("with-input-image", func(t *testing.T) {
-		req := NewAddBackgroudRequest()
+		req := NewAddBackgroundRequest()
 		req.InputImage = file
-		rsp, err := client.AddBackgroud(ctx, req)
+		rsp, err := client.AddBackground(ctx, req)
 		if err != nil {
 			t.Fatalf("request failed, error:%v", err)
 		}
@@ -69,9 +69,9 @@ func TestAddBackground(t *testing.T) {
 			t.Fatal("want image base64 standard but got empty")
 		}
 
-		addBackgroundReq := NewAddBackgroudRequest()
+		addBackgroundReq := NewAddBackgroundRequest()
 		addBackgroundReq.InputImageBase64 = idphotoRsp.ImageBase64Standard
-		addBackgroundRsp, err := client.AddBackgroud(ctx, addBackgroundReq)
+		addBackgroundRsp, err := client.AddBackground(ctx, addBackgroundReq)
 		if err != nil {
 			t.Fatalf("request failed, error:%v", err)
 		}

@@ -29,7 +29,7 @@ func (r *AddBackgroundRequest) Request(ctx context.Context) (*http.Request, erro
 	return request(ctx, method, url, r.InputImage, r.InputImageBase64, r)
 }
 
-func NewAddBackgroudRequest() *AddBackgroundRequest {
+func NewAddBackgroundRequest() *AddBackgroundRequest {
 	return &AddBackgroundRequest{}
 }
 
@@ -38,11 +38,11 @@ type AddBackgroundResponse struct {
 	ImageBase64 string `json:"image_base64"`
 }
 
-func (c *Client) AddBackgroud(ctx context.Context, req *AddBackgroundRequest) (*AddBackgroundResponse, error) {
-	return c.addBackgroud(ctx, req)
+func (c *Client) AddBackground(ctx context.Context, req *AddBackgroundRequest) (*AddBackgroundResponse, error) {
+	return c.addBackground(ctx, req)
 }
 
-func (c *Client) addBackgroud(ctx context.Context, req *AddBackgroundRequest) (*AddBackgroundResponse, error) {
+func (c *Client) addBackground(ctx context.Context, req *AddBackgroundRequest) (*AddBackgroundResponse, error) {
 	var rsp AddBackgroundResponse
 	err := c.Do(ctx, req, &rsp)
 	if err != nil {
