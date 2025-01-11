@@ -10,13 +10,13 @@ type AddBackgroundRequest struct {
 	InputImage       io.Reader `json:"-"`
 	InputImageBase64 string    `json:"-"`
 
-	Color *string `json:"color,omitempty"`
+	Color string `json:"color"`
 
-	Kb *int `json:"kb,omitempty"`
+	Kb int `json:"kb"`
 
-	Render *int `json:"render,omitempty"`
+	Render int `json:"render"`
 
-	Dpi *int `json:"dpi,omitempty"`
+	Dpi int `json:"dpi"`
 }
 
 func (r *AddBackgroundRequest) Request(ctx context.Context) (*http.Request, error) {

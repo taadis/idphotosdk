@@ -54,6 +54,12 @@ func TestAddBackground(t *testing.T) {
 
 		idphotoReq := NewIdphotoRequest()
 		idphotoReq.InputImageBase64 = base64Str
+		idphotoReq.Height = 413
+		idphotoReq.Width = 295
+		idphotoReq.Hd = false
+		idphotoReq.Dpi = 300
+		idphotoReq.HumanMattingModel = HumanMattingModel_ModnetPhotographicPortraitMatting
+		idphotoReq.FaceDetectModel = FaceDetectModel_Mtcnn
 		idphotoReq.Hd = false
 		idphotoRsp, err := client.Idphoto(ctx, idphotoReq)
 		if err != nil {
@@ -71,6 +77,10 @@ func TestAddBackground(t *testing.T) {
 
 		addBackgroundReq := NewAddBackgroundRequest()
 		addBackgroundReq.InputImageBase64 = idphotoRsp.ImageBase64Standard
+		addBackgroundReq.Color = "#428eda"
+		addBackgroundReq.Kb = 0
+		addBackgroundReq.Render = 0
+		addBackgroundReq.Dpi = 300
 		addBackgroundRsp, err := client.AddBackground(ctx, addBackgroundReq)
 		if err != nil {
 			t.Fatalf("request failed, error:%v", err)
