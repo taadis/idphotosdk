@@ -60,7 +60,7 @@ func TestIdphoto(t *testing.T) {
 		req.InputImageBase64 = base64Str
 		req.Height = 413
 		req.Width = 295
-		req.Hd = false
+		req.Hd = true
 		req.Dpi = 300
 		req.HumanMattingModel = HumanMattingModel_ModnetPhotographicPortraitMatting
 		req.FaceDetectModel = FaceDetectModel_Mtcnn
@@ -76,6 +76,9 @@ func TestIdphoto(t *testing.T) {
 		}
 		if rsp.ImageBase64Standard == "" {
 			t.Fatal("want image base64 standard but got empty")
+		}
+		if rsp.ImageBase64Hd == "" {
+			t.Fatal("want image base64 hd but got empty")
 		}
 	})
 
